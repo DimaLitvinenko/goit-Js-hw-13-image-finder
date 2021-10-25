@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>Поиск изображений</title>
+  </head>
+
+  <body>
+    <main class="main">
+      <section class="images-section">
+        <form class="search-form" id="search-form">
+          <label class="label" for="query">Что вы хотите увидеть?</label>
+          <input type="text" name="query" autocomplete="off" placeholder="Поиск изображения..." id="query" />
+          <button class="search-button" type="submit">
+            <svg class="search-svg" width="20" height="20">
+              <use href="./images/sprite.svg#icon-search"></use>
+            </svg>
+          </button>
+        </form>
+        
+        <ul class="gallery gallery-js" >
+        </ul>
+      </section>
+    </main>
+    
+    <div class="observer-item"></div>
+    <div class="loader hide-loader" id="loader"></div>
+    <button class="scroll-up" type="button" id="scrollToTop">
+      <svg class="scroll-svg" width="30" height="30">
+        <use href="./images/sprite.svg#icon-up"></use>
+      </svg>
+    </button>
+
+    
+  </body>
+</html>
