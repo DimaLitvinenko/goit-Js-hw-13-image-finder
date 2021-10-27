@@ -1,19 +1,17 @@
 import '@pnotify/core/dist/PNotify.css'
 import '@pnotify/core/dist/Angeler.css'
-
-import  '@pnotify/mobile/dist/PNotifyMobile.css';
-
+import  '@pnotify/mobile/dist/PNotifyMobile.css'
 import { notice, error, defaultModules, Stack } from '@pnotify/core'
-import * as PNotifyMobile from '@pnotify/mobile';
+import * as PNotifyMobile from '@pnotify/mobile'
+// defaultModules.set(PNotifyMobile, {swipeDismiss: true});
 
-defaultModules.set(PNotifyMobile, {});
-
-
-const onError = {
-    type: `${error}`,
-    text: 'Error! No correct query. Try again!',
+function onError() {
+  error({
+    title: 'Error!',
+    text: 'Something went wrong.Please try again later',
+    stack: myStack,
     hide: true,
-    delay: 800,
+    delay: 900,
     sticker: true,
     mode: 'light',
     shadow: true,
@@ -23,20 +21,17 @@ const onError = {
     styling: 'angeler',
     icons: 'angeler',
     closer: true,
-    closerHover: false,
-    stack : new Stack ({ 
-      dir1: 'down',  
-      dir2: 'right',  // Позиция от верхнего левого угла. 
-      firstpos1: 90,  
-      firstpos2: 10  // 90 пикселей сверху, 90 пикселей слева. 
-    }) 
-};
+    closerHover: false
+  });
+}
 
-const onNotice = {
-    type: `${notice}`,
-    text: 'Error! No correct query. Try again!',
+function onFetchError() {
+  notice({
+    title: 'Hey buddy!',
+    text: 'Please, check the entered value!',
+    stack: myStack,
     hide: true,
-    delay: 800,
+    delay: 9000,
     sticker: true,
     mode: 'light',
     shadow: true,
@@ -46,13 +41,23 @@ const onNotice = {
     styling: 'angeler',
     icons: 'angeler',
     closer: true,
-    closerHover: false,
-    stack : new Stack ({ 
-      dir1: 'down',  
-      dir2: 'right',  // Позиция от верхнего левого угла. 
-      firstpos1: 90,  
-      firstpos2: 10  // 90 пикселей сверху, 90 пикселей слева. 
-    }) 
-};
+    closerHover: false
+  });
+}
 
-export { onError, onNotice }
+const myStack = new Stack({
+  dir1: 'down', 
+  dir2: 'right',
+  firstpos1: 25,
+  firstpos2: 25,
+  push: 'bottom',
+  maxOpen: 1,
+  modules: new Map([
+    ...defaultModules,
+    [PNotifyMobile, {
+      swipeDismiss: true
+    }]
+  ])
+});
+
+export { onError, onFetchError }

@@ -1,13 +1,18 @@
 import './main.scss'
-// import 'material-design-icons/iconfont/material-icons.css'
 import cardItem from './templates/cardItem.hbs'
 import refs from './js/references/refs'
 import setLightbox from './js/components/lightbox'
-import { onError, onNotice } from './js/components/notifications'
+import { onError, onFetchError } from './js/components/notifications'
 import ApiImages from './js/api/apiService'
 
 const apiImages = new ApiImages();
 const { searchForm, gallery, observerItem, loader, scrollElem } = refs;
+const observer = new IntersectionObserver(onObserveHandler, options);
+
+const options = {
+  rootMargin: '100px',
+  threshold: 0.5,
+};
 
 searchForm.addEventListener('submit', onSearchHandler);
 gallery.addEventListener('click', setLightbox);
@@ -15,28 +20,25 @@ gallery.addEventListener('click', setLightbox);
 function onSearchHandler(event) {
   event.preventDefault();
   clearGallery();
-
   loader.classList.remove('hide-loader');
 
   const inputValue = event.currentTarget.elements.query.value;
   const str = new RegExp('[a-zA-Z]');
-
   if (!str.test(inputValue) || inputValue === '') {
-    hideLoader();
-    return onError;
+    toHideLoader();
+    return onError();
   }
 
   apiImages.query = inputValue;
   apiImages.resetPage();
-  apiImages.fetchImages()
-  .then(renderImgs)
-  .catch(onError);
+  apiImages.fetchImages().then(renderImages)
+  .catch(onFetchError);
 }
 
-function renderImgs(images) {
+function renderImages(images) {
   if (images.length === 0) {
-    hideLoader();
-    return onNotice;
+    toHideLoader();
+    return onError();
   }
 
   const markup = cardItem(images);
@@ -49,34 +51,26 @@ function clearGallery() {
   observer.unobserve(observerItem);
 }
 
-function renderMore() {
-  apiImages
-    .fetchImages()
-    .then(renderImgs)
-    .then(hideLoader)
-    .catch(onNotice);
+function renderMoreImages() {
+  apiImages.fetchImages().then(renderImages).then(toHideLoader)
+  .catch(onFetchError);
 }
 
 function onObserveHandler(entries) {  
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      renderMore();
+      renderMoreImages();
     }
   });
 };
 
-const options = {
-  rootMargin: '100px',
-  threshold: 0.5,
-};
 
-const observer = new IntersectionObserver(onObserveHandler, options);
-
-function hideLoader() {
+function toHideLoader() {
   loader.classList.add('hide-loader');
 }
 
-scrollElem.addEventListener('click', onUpHandler);
+
+// прокрутка
 
 window.addEventListener('scroll', function () {
   if (pageYOffset > 100) {
@@ -86,7 +80,9 @@ window.addEventListener('scroll', function () {
   }
 });
 
-function onUpHandler() {
+scrollElem.addEventListener('click', upBtnHandler);
+
+function upBtnHandler() {
   window.scrollTo(0, 0);
 }
 

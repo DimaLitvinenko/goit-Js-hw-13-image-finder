@@ -1,6 +1,5 @@
 import { BASE_URL } from '../references/baseUrl'
 import { KEY_API } from '../references/keyApi'
-// import showError from '../components/notifications'
 
 export default class ApiImages {
   constructor() {
@@ -21,7 +20,6 @@ export default class ApiImages {
       })
       .catch(error => console.warn(error))
   }
-  
   augmentPage() {
     this.page += 1; 
   }
