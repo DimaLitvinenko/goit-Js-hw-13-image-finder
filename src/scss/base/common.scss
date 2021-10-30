@@ -1,0 +1,76 @@
+$main-font: pacifico, sans-serif;    // 400, 700
+$secondary-font: sanvito-pro-display, sans-serif;  // 700
+$third-font: rokkitt, serif;       // 600, 800, 900
+$fourth-font: acuta, serif;        // 300, 500, 800 900
+
+$primary-text-color: #757575;
+$title-text-color: #212121;
+$accent-color: #2196f3;
+$primary-white-color: #ffffff;
+$secondary-color: #ce4404e7;
+$footer-link-color: rgba(255, 255, 255, 0.6);
+$icon-color: #afb1b8;
+
+$animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration: 250ms;
+/*
+font-family: acuta, serif;  // 300, 500, 800 900
+font-family: pacifico, sans-serif; // 400 700
+font-family: rokkitt, serif; // 600, 800, 900
+font-family: sanvito-pro-display, sans-serif; // 700
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  color: $primary-text-color;
+  background-image: url('./images/bg-pattern.png');
+  background-color: $secondary-color;
+  font-family: $fourth-font;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.03em;
+
+  &.modal-open,
+  &.mobile-open {
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      overflow: auto;
+    }
+  }
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+}

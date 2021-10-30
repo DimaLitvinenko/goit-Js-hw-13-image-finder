@@ -1,12 +1,12 @@
 import './main.scss'
 import cardItem from './templates/cardItem.hbs'
 import refs from './js/references/refs'
-import setLightbox from './js/components/lightbox'
+import openLightBox from './js/components/lightBox'
 import { onError, onFetchError } from './js/components/notifications'
-import ApiImages from './js/api/apiService'
+import PixabayApiService from './js/api/apiService'
 
-const apiImages = new ApiImages();
-const { searchForm, gallery, observerItem, loader, scrollElem } = refs;
+const apiService = new PixabayApiService();
+const { searchForm, gallery, observerItem, scrollElem, loader } = refs;
 const observer = new IntersectionObserver(onObserveHandler, options);
 
 const options = {
@@ -14,30 +14,37 @@ const options = {
   threshold: 0.5,
 };
 
-searchForm.addEventListener('submit', onSearchHandler);
-gallery.addEventListener('click', setLightbox);
+searchForm.addEventListener('submit', searchPhotoHandler);
+gallery.addEventListener('click', openLightBox);
 
-function onSearchHandler(event) {
+function searchPhotoHandler(event) {
   event.preventDefault();
-  clearGallery();
-  loader.classList.remove('hide-loader');
+  clearCardGallery();
+
+  showLoader();
 
   const inputValue = event.currentTarget.elements.query.value;
+  console.log(inputValue);
   const str = new RegExp('[a-zA-Z]');
   if (!str.test(inputValue) || inputValue === '') {
-    toHideLoader();
-    return onError();
+    hideLoader();
+    return onError(); 
   }
 
-  apiImages.query = inputValue;
-  apiImages.resetPage();
-  apiImages.fetchImages().then(renderImages)
-  .catch(onFetchError);
+  apiService.query = inputValue;
+  apiService.resetPage();
+
+  apiService
+  .fetchPhotos()
+  .then(renderImages)
+  .catch(onFetchError)
 }
 
 function renderImages(images) {
+  console.log(images.length === 0);
+
   if (images.length === 0) {
-    toHideLoader();
+    hideLoader();
     return onError();
   }
 
@@ -46,14 +53,17 @@ function renderImages(images) {
   observer.observe(observerItem);
 }
 
-function clearGallery() {
+function clearCardGallery() {
   gallery.innerHTML = '';
   observer.unobserve(observerItem);
 }
 
 function renderMoreImages() {
-  apiImages.fetchImages().then(renderImages).then(toHideLoader)
-  .catch(onFetchError);
+  apiService
+  .fetchPhotos()
+  .then(renderImages)
+  .then(hideLoader)
+  .catch(onFetchError)
 }
 
 function onObserveHandler(entries) {  
@@ -65,13 +75,15 @@ function onObserveHandler(entries) {
 };
 
 
-function toHideLoader() {
+function hideLoader() {
   loader.classList.add('hide-loader');
 }
 
+function showLoader() {
+  loader.classList.remove('hide-loader');
+}
 
-// прокрутка
-
+// Безконечная прокрутка прокрутка
 window.addEventListener('scroll', function () {
   if (pageYOffset > 100) {
     scrollElem.style.opacity = '1';
@@ -80,94 +92,11 @@ window.addEventListener('scroll', function () {
   }
 });
 
+// Кнопка возврат вверх сраницы
 scrollElem.addEventListener('click', upBtnHandler);
 
 function upBtnHandler() {
   window.scrollTo(0, 0);
+  scrollElem.removeEventListener('click');
 }
 
-
-///// RINA
-// import './styles.css';
-// import cardTemplate from './templates/card-item.hbs';
-// import ImagesApiService from './js/components/apiService';
-// import { onError, onFetchError } from './js/components/notifications';
-// import getRefs from './js/components/getRefs';
-// const refs = getRefs();
-// const imagesApiService = new ImagesApiService();
-// const observer = new IntersectionObserver(intersectionHandler);
-// import setLightbox from './js/components/lightbox';
-
-// refs.searchForm.addEventListener('submit', onSearch);
-// refs.gallery.addEventListener('click', setLightbox);
-
-// function onSearch(event) {
-//   event.preventDefault();
-
-//   clearGallery();
-//   refs.loader.classList.remove('hide-loader');
-
-//   const inputValue = event.currentTarget.elements.query.value;
-
-//   const str = new RegExp('[a-zA-Z]');
-
-//   if (!str.test(inputValue) || inputValue === '') {
-//     hideLoader();
-//     return onError();
-//   }
-
-//   imagesApiService.query = inputValue;
-//   imagesApiService.resetPage();
-//   imagesApiService.fetchImages().then(renderImgs).catch(onFetchError);
-// }
-
-// function renderImgs(images) {
-//   if (images.length === 0) {
-//     hideLoader();
-//     return onError();
-//   }
-
-//   const markup = cardTemplate(images);
-//   refs.gallery.insertAdjacentHTML('beforeend', markup);
-//   observer.observe(refs.observerItem);
-// }
-
-// function clearGallery() {
-//   refs.gallery.innerHTML = '';
-
-//   observer.unobserve(refs.observerItem);
-// }
-
-// function renderMore() {
-//   imagesApiService
-//     .fetchImages()
-//     .then(renderImgs)
-//     .then(hideLoader)
-//     .catch(onFetchError);
-// }
-
-// function intersectionHandler(entries) {
-//   const { isIntersecting } = entries[0];
-//   if (isIntersecting) {
-//     renderMore();
-//   }
-// }
-
-// function hideLoader() {
-//   refs.loader.classList.add('hide-loader');
-// }
-
-// // прокрутка
-// refs.scrollElem.addEventListener('click', goUp);
-
-// window.addEventListener('scroll', function () {
-//   if (pageYOffset > 100) {
-//     refs.scrollElem.style.opacity = '1';
-//   } else {
-//     refs.scrollElem.style.opacity = '0';
-//   }
-// });
-
-// function goUp() {
-//   window.scrollTo(0, 0);
-// }

@@ -1,0 +1,15 @@
+.section-padding {
+    @media screen and (min-width: 1200px) {
+      padding-top: 94px;
+      padding-bottom: 94px;
+    }
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+  
+// @media (max-width:480px) {
+//   h1 { font-size: 3em; }
+//   h2 { font-size: 1.8em; }
+//   h3 { font-size: 1.5em; }
+//   td:first-child { white-space: normal; }
+// }

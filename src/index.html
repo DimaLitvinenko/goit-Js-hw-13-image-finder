@@ -1,43 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <title>Image Searching</title>
-  </head>
-  <body>
-    <div class="container">
-      <section class="hero-section">
-        
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+  integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+  crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/lnf3xaj.css">
+  <title>Finder Photos</title>
+</head>
+ 
+     
+<body>
+  <!-- Header -->
+  <header class="page-header">
+    <div class="container header-container">
+      <a href="./index.html" class="logo page-header__logo animate__rubberBand">
+        <span class="logo__web">DimaLy</span>Studio
+      </a>
+
+      <a href="https://pixabay.com/">
+        <img src="https://pixabay.com/static/img/public/leaderboard_a.png" alt="Pixabay">
+      </a>
     </div>
-    <main class="main">
-      <section class="images-section">
-        <form class="search-form" id="search-form">
-          <label class="label" for="query">Let's find something nice</label>
-          <input type="text" name="query" autocomplete="off" placeholder="Enter the picture name" id="query" />
-          <button class="search-button" type="submit">
-            <svg class="search-svg" width="20" height="20">
-              <use href="./images/sprite.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>
-        
-        <ul class="gallery gallery-js" ></ul>
-      </section>
-    </main>
-    
-    <div class="observer-item"></div>
+  </header>
 
-    <div class="loader hide-loader" id="loader"></div>
+  <main class="main">
 
-    <button class="scroll-up" type="button" id="scrollToTop">
-      <svg class="scroll-svg" width="30" height="30">
-        <use href="./images/sprite.svg#icon-up"></use>
-      </svg>
-    </button>
+    <!-- Hero section -->
+    <section class="hero-section">
+        <h1 class="hero-section__title">Эффективные решения <br> для вашего бизнеса</h1>
+        <button data-modal-open type="button" class="hero-section__button">Заказать услугу</button>
+    </section>
+
+    <!-- Search section-->
+    <section class="images-section">
+      <form class="search-form" id="search-form">
+
+        <label class="label" for="query">Find now the best Photo</label>
+        <input 
+        type="text" 
+        name="query" 
+        autocomplete="off" 
+        placeholder="Search photo by name" 
+        id="query" 
+        />
+
+        <button class="search-button" type="submit">
+          <svg class="search-svg" width="20" height="20">
+            <use href="./images/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+
+      </form>
+  
+      <ul class="gallery gallery-js"></ul>
     
-  </body>
+      <div class="observer-item"></div>
+
+      <div class="loader hide-loader" id="loader"></div>
+
+      <button class="scroll-up" type="button" id="scrollToTop">
+        <svg class="scroll-svg" width="30" height="30">
+          <use href="./images/sprite.svg#icon-up"></use>
+        </svg>
+      </button>
+    </section>
+
+  </main>
+  
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container page-footer--container">
+      <a href="./index.html" class="logo page-footer--logo animate__rubberBand">
+        <span class="logo__web">Web</span>Studio
+    
+      </a>
+    </div>
+    <p class="copy-right"> &#169 Д.О. Литвиненко, 2021</p>
+  </footer>
+</body>
+
 </html>

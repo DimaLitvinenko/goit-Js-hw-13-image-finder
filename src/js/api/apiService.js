@@ -1,26 +1,36 @@
 import { BASE_URL } from '../references/baseUrl'
-import { KEY_API } from '../references/keyApi'
+import { API_KEY } from '../references/apiKey'
 
-export default class ApiImages {
+export default class PixabayApiService {
   constructor() {
-    this.searchQuery = null;
+    this.searchQuery = '';
     this.page = 1;
+    this.perPage = 12;
   }
-
-  async fetchImages() {
-    const response = await fetch(`${BASE_URL}&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${KEY_API}`)
-
+  async fetchPhotos() {
+    const response = await fetch(
+      `${BASE_URL}
+      &q=${this.searchQuery}
+      &page=${this.page}
+      &per_page=${this.perPage}
+      &key=${API_KEY}`
+    );
     if (!response.ok) {
       throw response;
     }
-    return response.json()
+
+    return response
+      .json()
       .then(({ hits }) => {
-        this.augmentPage();
+        this.incrementPage();
+        
         return hits; 
       })
-      .catch(error => console.warn(error))
+      .catch(error => {
+        console.warn(error);
+      })
   }
-  augmentPage() {
+  incrementPage() {
     this.page += 1; 
   }
   resetPage() {
@@ -34,3 +44,52 @@ export default class ApiImages {
   }
 };
 
+
+/*
+const API_KEY = '20659430-8e33c69d8b4c60137606db57c';
+const BASE_URL = 'https://pixabay.com/api';
+
+export default class ImagesApiService {
+  constructor() {
+    this.searchQuery = '';
+    this.page = 1;
+  }
+
+  async fetchImages() {
+    const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw response;
+    }
+
+    return response
+      .json()
+      .then(({ hits }) => {
+        this.incrementPage();
+
+        return hits;
+      })
+      .catch(err => {
+        console.warn(err);
+      });
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+}
+*/
