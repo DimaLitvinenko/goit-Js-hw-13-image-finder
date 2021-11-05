@@ -1,30 +1,29 @@
 {{#each this}}
-<li class="item-card">
-
-    <div class="photo-card" style="background-image: url('https://i.imgur.com/NI2NcSe.gif')">
+<li class="photo-item" id="{{id}}" data-index="" >
+    <div class="photo-item__container" style="background-image: url('https://i.imgur.com/NI2NcSe.gif')">
         <img 
-        class="lightbox__image" 
+        class="photo-item__img" 
         src="{{webformatURL}}" 
-        id="{{id}}" 
         data-lightbox-img="{{largeImageURL}}" 
         alt="{{tags}}"
+        loading="lazy"
         >
 
         <div class="stats">
             <p class="stats-item">
-                <i class="material-icons">thumb_up</i>
+                <i class="material-icons-two-tone">thumb_up</i>
                 {{likes}}
             </p>
             <p class="stats-item">
-                <i class="material-icons">visibility</i>
+                <i class="material-icons-two-tone">visibility</i>
                 {{views}}
             </p>
             <p class="stats-item">
-                <i class="material-icons">comment</i>
+                <i class="material-icons-two-tone">comment</i>
                 {{comments}}
             </p>
             <p class="stats-item">
-                <i class="material-icons">cloud_download</i>
+                <i class="material-icons-two-tone">cloud_download</i>
                 {{downloads}}
             </p>
         </div>

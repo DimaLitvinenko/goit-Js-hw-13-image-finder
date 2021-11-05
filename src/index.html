@@ -8,8 +8,8 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
   integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-  crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  crossorigin="anonymous"
+  >
   <link rel="stylesheet" href="https://use.typekit.net/lnf3xaj.css">
   <title>Finder Photos</title>
 </head>
@@ -20,57 +20,62 @@
   <header class="page-header">
     <div class="container header-container">
       <a href="./index.html" class="logo page-header__logo animate__rubberBand">
-        <span class="logo__web">DimaLy</span>Studio
+        <!-- <span class="logo__web"></span> -->
+        <img src="./images/dimalyLOGO.png" alt="developer-logo" class="logo__web">
+      </a>
+      <a href="https://pixabay.com/">
+        <svg class="icon pixabay-logo" width="50" height="50">
+          <use href="./images/sprite.svg#pixabay-logo"></use>
+        </svg>
       </a>
 
-      <a href="https://pixabay.com/">
-        <img src="https://pixabay.com/static/img/public/leaderboard_a.png" alt="Pixabay">
-      </a>
     </div>
   </header>
 
   <main class="main">
 
-    <!-- Hero section -->
-    <section class="hero-section">
-        <h1 class="hero-section__title">Эффективные решения <br> для вашего бизнеса</h1>
+    <!-- Hero section -->'
+    <section class="hero-section" >
+        <h1 class="hero-section__title">Find now the best Photo</h1>
         <button data-modal-open type="button" class="hero-section__button">Заказать услугу</button>
     </section>
 
     <!-- Search section-->
     <section class="images-section">
-      <form class="search-form" id="search-form">
+      <div class="container">
 
-        <label class="label" for="query">Find now the best Photo</label>
-        <input 
-        type="text" 
-        name="query" 
-        autocomplete="off" 
-        placeholder="Search photo by name" 
-        id="query" 
-        />
+        <form class="search-form" id="search-form">
+          <div class="search-form-wrapper">
+            <input 
+            class="search-form__input"
+            type="text" 
+            name="query" 
+            autocomplete="off" 
+            placeholder="Search photo by name" 
+            id="query" 
+            />
+            <label class="search-form__label" for="query"></label>
+            <button class="search-button" type="submit">
+              <svg class="search-svg" width="20" height="20">
+                <use href="./images/sprite.svg#icon-search"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+      
+        <ul class="gallery gallery-js"></ul>
+        
+        <div class="observer-item"></div>
+        <div class="loader hide-loader" id="loader"></div>
 
-        <button class="search-button" type="submit">
-          <svg class="search-svg" width="20" height="20">
-            <use href="./images/sprite.svg#icon-search"></use>
+        <button class="scroll-up" type="button" id="scrollToTop">
+          <svg class="scroll-svg" width="30" height="30">
+            <use href="./images/sprite.svg#icon-up"></use>
           </svg>
         </button>
 
-      </form>
-  
-      <ul class="gallery gallery-js"></ul>
-    
-      <div class="observer-item"></div>
-
-      <div class="loader hide-loader" id="loader"></div>
-
-      <button class="scroll-up" type="button" id="scrollToTop">
-        <svg class="scroll-svg" width="30" height="30">
-          <use href="./images/sprite.svg#icon-up"></use>
-        </svg>
-      </button>
+      </div>
     </section>
-
   </main>
   
   <!-- Footer -->
@@ -78,7 +83,6 @@
     <div class="container page-footer--container">
       <a href="./index.html" class="logo page-footer--logo animate__rubberBand">
         <span class="logo__web">Web</span>Studio
-    
       </a>
     </div>
     <p class="copy-right"> &#169 Д.О. Литвиненко, 2021</p>

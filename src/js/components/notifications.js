@@ -28,9 +28,9 @@ function onError() {
   });
 }
 
-function onFetchError(type) {
+function onFetchError() {
   notice({
-    type: `${type}`,
+    type: 'notice',
     title: 'Hey buddy!',
     text: 'Please, check the entered value!',
     stack: myStack,
@@ -43,6 +43,7 @@ function onFetchError(type) {
     maxTextHeight: null,
     styling: 'angeler',
     icons: 'angeler',
+    closer: true,
 });
 }
 
@@ -52,7 +53,7 @@ const myStack = new Stack({
   delay: 900,
   firstpos1: 25,
   firstpos2: 25,
-  
+
   closerHover: false,
   types: [
     {
@@ -62,6 +63,7 @@ const myStack = new Stack({
     },
     {
       type: 'notice',
+      duration: 200,
       dismissible: true,
     },
   ]

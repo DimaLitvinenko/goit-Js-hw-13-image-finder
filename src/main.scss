@@ -1,18 +1,29 @@
 @import './scss/base/common.scss';
 @import './scss/base/container.scss';
 @import './scss/base/section.scss';
-@import './scss/components/templateItem.scss';
+@import './scss/components/header.scss';
+@import './scss/components/hero.scss';
 @import './scss/utils/visually-hidden.scss';
 
 .images-section {
-  position: relative;
   text-align: center;
   margin: auto;
   margin-bottom: 30px;
 }
 
-.label {
-  display: block;
+.search-form {
+  position: relative;
+}
+
+.search-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-form__label {
+  display: flex;
   font-size: 32px;
   font-weight: 900;
   text-align: center;
@@ -21,8 +32,7 @@
   margin-bottom: 30px;
 }
 
-input {
-  position: relative;
+.search-form__input {
   padding: 12px 24px;
 
   background-color: transparent;
@@ -33,91 +43,103 @@ input {
   border-radius: 50px;
   border: 2px solid white;
   outline-style: none;
+  transition: color $animation-duration $animation-timing,
+  border $animation-duration $animation-timing;
 
-  transition: all 250ms ease-in-out;
-}
+  &::placeholder {
+    color: #4ae40d;
+  }
 
-input::placeholder {
-  color: #4ae40d;
-}
-
- input:hover,
-input:focus {
-  padding: 12px 0;
-  outline: 0;
-  border: 1px solid transparent;
-  border-bottom: 2px solid #4ae40d;
-  border-radius: 0;
-} 
-
-.search-svg {
-  position: absolute;
-
-  fill: #ffffff;
+  &:hover,
+  &:focus {
+    color: #0de45f;
+    padding: 12px 0;
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 2px solid #4ae40d;
+    border-radius: 2px;
+  } 
 }
 
 .search-button {
-  position: absolute;
-  top: 79px;
-  right: 4px;
-  width: 40px;
-  height: 40px;
   display: flex;
-  border-radius: 50%;
   justify-content: center;
   align-items: center;
+  
+  width: 40px;
+  height: 40px;
+  
   cursor: pointer;
   padding: 2px;
   border-style: none;
+  border-radius: 50%;
   background-color: #4ae40d;
+  opacity: 0.8;
   outline-style: none;
-  transition: all 0.5s ease-in;
+  transition:  background-color $animation-duration $animation-timing,
+  opacity $animation-duration $animation-timing;
+
+  &:focus,
+  &:hover {
+    opacity: 1;
+    background-color: #4ae40d;
+
+    & .search-svg,
+    & .search-svg {
+      fill: #e4630d;
+    }
+  }
 }
 
-.search-button:hover,
-.search-button:focus {
-  background-color: #4ae40d;
+.search-svg {
+  position: absolute;
+  fill: #ffffff;
+  transition: fill $animation-duration $animation-timing;
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-auto-rows: 240px;
+  grid-gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.item-card {
-  position: relative;
-  width: calc((100% - 15px) / 4);
-  margin-right: 5px;
-  margin-bottom: 5px;
-  
-  overflow: hidden;
-  transition: 1s;
-}
-
-.item-card:nth-last-child(-n + 4) {
-  margin-bottom: 0px;
-}
-.item-card:nth-child(4n) {
-  margin-right: 0px;
-}
-
-.photo-card {
+.photo-item__container {
   background-size: contain;
 }
 
-.photo-card .lightbox__image {
+.photo-item__container .photo-item__img {
   object-fit: cover;
   cursor: zoom-in;
 }
 
-.item-card:hover,
-.item-card:focus  {
+.photo-item {
+  position: relative;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: opacity $animation-duration $animation-timing;
+}
+
+.photo-item:nth-last-child(-n + 4) {
+  margin-bottom: 0px;
+}
+.photo-item:nth-child(4n) {
+  margin-right: 0px;
+}
+
+.photo-item:hover,
+.photo-item:focus  {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
   transform: scale(1.05);
   z-index: 50;
 
-  .stats{
+  & .stats{
     opacity: 1;
     transform: translatey(20%);
   }
@@ -125,28 +147,33 @@ input:focus {
 
 .stats {
   position: absolute;
+  bottom: 10px;
+  left: 0;
+
   display: flex;
-  bottom: 0;
   justify-content: space-between;
+
   width: 100%;
   height: 50px;
   padding: 10px;
-  opacity: 0;
-  background: rgba(189, 189, 189, 0.4);
 
-  top: 0;
-  transform: translatey(-10%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  background-color: rgba(97, 95, 95, 0.6);
+  transform: translatey(100%);
+  transition: transform $animation-duration $animation-timing,
+  opacity $animation-duration $animation-timing;
 }
+
 .stats-item {
   display: flex;
   align-items: center;
+  color: $primary-white-color;
 }
 
 .material-icons {
-  color: rgb(20, 20, 20);
+  color: $primary-white-color;
   font-size: 18px;
+  margin-right: 8px;
 }
 
 .loader {
@@ -156,7 +183,7 @@ input:focus {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  animation: spin 2s linear infinite;
+  animation: spin 2s $animation-timing infinite;
 }
 
 @keyframes spin {
@@ -172,9 +199,36 @@ input:focus {
   display: none;
 }
 
-.lightbox-wrapper {
+.lightbox__wrapper {
+  // background-image: url(./images/please-wait-load.gif);
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.lightbox__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    background-color: black;
+  } 
+}
+
+.lightbox__close-icon {
+  margin: auto;
+  width: 60px;
+  height: 60px;
+
+  fill: red;
+  &:hover,
+  &:focus {
+    fill:green;
+  }
+} 
 
 .scroll-up {
   position: fixed;
@@ -192,22 +246,25 @@ input:focus {
   padding: 0;
   opacity: 0;
   z-index: 60;
+  transition: background-color $animation-duration $animation-timing;
 
-  transition: all 0.5s ease-in;
+  &:hover,
+  &:focus {
+    background-color: #88f1109f;
+  }
 }
 
 .scroll-svg {
   margin: auto;
   width: 60px;
   height: 60px;
-
   fill: #88f110;
+  transition: fill $animation-duration $animation-timing;
+ 
+  &:hover,
+  &:focus {
+    fill: #ffffff;
+  }
 }
 
-.scroll-up:hover {
-  background-color: #88f1109f;
-}
 
-.scroll-svg:hover {
-  fill: #ffffff;
-}

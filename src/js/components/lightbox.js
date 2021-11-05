@@ -1,70 +1,46 @@
 import * as basicLightbox from 'basiclightbox'
+import 'material-icons/iconfont/filled.scss';
+import * as basicSlider from 'basicslider'
 import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css'
-
 let instance = null;
 
-export default function openLightBox({ target }) {
+export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
-    instance = basicLightbox.create(
-      `<div class="lightbox-wrapper is-open" style="background-image: url('https://i.imgur.com/NI2NcSe.gif')">
-        <img src="${target.dataset.lightboxImg}" width="800" height="600">
-      </div>`
-    );
-    instance.show();
+    instance = basicLightbox.create(`
+      <div class="lightbox__wrapper" style="background-image: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif')">
+        <button class="lightbox__close-button" type="button"> 
+          <i class="lightbox__close-icon material-icons">
+          close
+          </i> 
+        </button>
+        <img class="lightbox__image" src="${target.dataset.lightboxImg}" alt="${target.alt}" width="800" height="600">
+      </div>
+    `, {
+      onShow: (instance) => {
+        document.body.style.overflowY = 'hidden';
+        instance.element().querySelector('.lightbox__close-button').onclick = instance.close;
+      },
+      onClose: () => {
+        document.body.style.overflowY = 'unset';
+      },
+      className : '.slider'
+    })
+    instance.show(() => {
+      window.addEventListener('keydown', closeLightBoxByEscHandler); 
+    })
+    return;
   }
-  return;
 }
 // Закрыть lightbox клавишей ESC
-window.addEventListener('keydown', (event) => {
-  if (event.code === 'Escape') {
-    console.log(event.currentTarget);
+function closeLightBoxByEscHandler({ code }) {
+  if (code === 'Escape') {
     instance.close();
   }
   return;
-})
+}
 
 
- // HW-08 GALLERY
-// import galleryItems from "./references/gallery.js";
-// const refs = {
-//   list: document.querySelector('.js-gallery'),
-//   container: document.querySelector('.js-lightbox'),
-//   image: document.querySelector('.lightbox__image'),
-//   closeBtn: document.querySelector('[data-action="close-lightbox"]'),
-//   overlay: document.querySelector('.lightbox__overlay'),
-// };
-// const { list, container, image, closeBtn, overlay } = refs;
 
-// const createGalleryCard = items => {               // Создание и рендеринг разметки для строки
-//   return list.insertAdjacentHTML(
-//     'beforeend',
-//     items.map(({ preview, original, description }, index) => {
-//       return `
-//       <li class="gallery__item">
-//         <a
-//           class="gallery__link"
-//           href="${original}"
-//         >
-//           <img
-//             class="gallery__image"
-//             src="${preview}"
-//             data-source="${original}"
-//             alt="${description}"
-//             data-index="${index}"
-//           />
-//         </a>
-//       </li>`;
-//     })
-//       .join('')
-//   );
-// };
-// const markup = createGalleryCard(galleryItems, galleryItems.length);  
-
-// const itemGalleryEscHandler = ({ key }) => {                      // - Закрытие модального окна по нажатию клавиши `ESC`.
-//   if (key === 'Escape') {
-//     itemGalleryCloseHandler();    
-//   };
-// };
 
 // const scrollGalleryHandler = ({ key }) => {   
 //   let currentIndex = galleryItems.findIndex(
@@ -89,36 +65,45 @@ window.addEventListener('keydown', (event) => {
 //   image.src = galleryItems[currentIndex].original;
 // };
 
+  // for each
+// export function forEach (arr, callback, scope) {
+//   for (var i = 0, l = arr.length; i < l; i++) {
+//     callback.call(scope, arr[i], i);
+//   }
+// }
 
 
-// // - Реализация делегирования на галерее `ul.js-gallery` и получение `url` большого изображения.
-// const itemGalleryOpenHandler = ({ target, currentTarget }) => {
-//   if (target.nodeName !== 'IMG') {
-//     return;
-//   };
-//   console.log(target);
-//   console.log(currentTarget);
-  
-//   event.preventDefault();
-//   window.addEventListener('keydown', itemGalleryEscHandler);  
-//   window.addEventListener('keydown', scrollGalleryHandler);
+  // Следующий
+// (function () {
+//   "use strict";
 
-//   container.classList.add('is-open');        // - Открытие модального окна по клику на элементе галереи.
-//   image.src = target.dataset.source;          // - Подмена значения атрибута `src` элемента `img.lightbox__image`.
-//   image.alt = target.alt;
-//   console.log(image.alt);
-// };
+//   if (!("nextElementSibling" in document.documentElement)) {
+//     Object.defineProperty(Element.prototype, "nextElementSibling", {
+//       get: function(){
+//         var e = this.nextSibling;
+//         while(e && 1 !== e.nodeType) {
+//           e = e.nextSibling;
+//         }
+//         return e;
+//       }
+//     });
+//   }
+// })();
 
+  //   Предыдущий
+// (function () {
+//   "use strict";
 
+//   if (!("previousElementSibling" in document.documentElement)) {
+//     Object.defineProperty(Element.prototype, "previousElementSibling", {
+//       get: function(){
+//         var e = this.previousSibling;
+//         while(e && 1 !== e.nodeType) {
+//           e = e.previousSibling;
+//         }
+//         return e;
+//       }
+//     });
+//   }
+// })();
 
-// const itemGalleryCloseHandler = () => {
-//   window.removeEventListener('keydown', scrollGalleryHandler);
-  
-//   container.classList.remove('is-open');     // - Закрытие модального окна по клику на кнопку `button[data-action="close-lightbox"]`.
-//   image.src = "";                         // - Очистка значения атрибута `src` элемента `img.lightbox__image`.
-//   image.alt = "";
-// };
-
-// list.addEventListener('click', itemGalleryOpenHandler);
-// closeBtn.addEventListener('click', itemGalleryCloseHandler);
-// overlay.addEventListener('click', itemGalleryCloseHandler);

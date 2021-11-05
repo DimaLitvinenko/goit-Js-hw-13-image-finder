@@ -49,9 +49,10 @@ img {
 }
 
 body {
+  font-display: swap;
   color: $primary-text-color;
-  background-image: url('./images/bg-pattern.png');
-  background-color: $secondary-color;
+  
+  background-color: $primary-white-color;
   font-family: $fourth-font;
   font-weight: normal;
   font-style: normal;

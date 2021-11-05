@@ -1,21 +1,22 @@
 import './main.scss'
-import cardItem from './templates/cardItem.hbs'
-import refs from './js/references/refs'
-import openLightBox from './js/components/lightBox'
+import 'material-icons/iconfont/two-tone.scss';
+import cardItemTemplate from './templates/galleryItemTemp.hbs'
+import openLightBoxHandler from './js/components/lightBox'
 import { onError, onFetchError } from './js/components/notifications'
 import PixabayApiService from './js/api/apiService'
-
 const apiService = new PixabayApiService();
-const { searchForm, gallery, observerItem, scrollElem, loader } = refs;
-const observer = new IntersectionObserver(onObserveHandler, options);
 
+import refs from './js/references/refs'
+const { searchForm, gallery, observerItem, scrollElem, loader } = refs;
+
+const observer = new IntersectionObserver(onObserveHandler, options);
 const options = {
   rootMargin: '100px',
   threshold: 0.5,
 };
 
 searchForm.addEventListener('submit', searchPhotoHandler);
-gallery.addEventListener('click', openLightBox);
+gallery.addEventListener('click', openLightBoxHandler);
 
 function searchPhotoHandler(event) {
   event.preventDefault();
@@ -25,6 +26,7 @@ function searchPhotoHandler(event) {
 
   const inputValue = event.currentTarget.elements.query.value;
   console.log(inputValue);
+
   const str = new RegExp('[a-zA-Z]');
   if (!str.test(inputValue) || inputValue === '') {
     hideLoader();
@@ -47,8 +49,8 @@ function renderImages(images) {
     hideLoader();
     return onError();
   }
-
-  const markup = cardItem(images);
+  const markup = cardItemTemplate(images);
+  
   gallery.insertAdjacentHTML('beforeend', markup);
   observer.observe(observerItem);
 }
@@ -97,6 +99,26 @@ scrollElem.addEventListener('click', upBtnHandler);
 
 function upBtnHandler() {
   window.scrollTo(0, 0);
-  scrollElem.removeEventListener('click');
 }
 
+// setIntersectionObserver(addNewImages) {
+//   setTimeout(() => {
+//     const callback = (entries, self) => {
+//       entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//           addNewImages()
+//           self.unobserve(lastItem)
+//         }
+//       });
+//     };
+
+//     const options = {
+//       rootMargin: '200px'
+//     };
+
+//     const observer = new IntersectionObserver(callback, options);
+//     const items = document.querySelectorAll('.item');
+//     const lastItem = items[items.length - 1]
+//     observer.observe(lastItem)
+//   }, 500)
+// }

@@ -9,11 +9,7 @@ export default class PixabayApiService {
   }
   async fetchPhotos() {
     const response = await fetch(
-      `${BASE_URL}
-      &q=${this.searchQuery}
-      &page=${this.page}
-      &per_page=${this.perPage}
-      &key=${API_KEY}`
+      `${BASE_URL}&q=${this.searchQuery}&page=${this.page}&per_page=${this.perPage}&key=${API_KEY}`
     );
     if (!response.ok) {
       throw response;
@@ -26,8 +22,8 @@ export default class PixabayApiService {
         
         return hits; 
       })
-      .catch(error => {
-        console.warn(error);
+      .catch(notice => {
+        alert(`${notice}`)
       })
   }
   incrementPage() {
@@ -43,53 +39,3 @@ export default class PixabayApiService {
     this.searchQuery = newQuery;
   }
 };
-
-
-/*
-const API_KEY = '20659430-8e33c69d8b4c60137606db57c';
-const BASE_URL = 'https://pixabay.com/api';
-
-export default class ImagesApiService {
-  constructor() {
-    this.searchQuery = '';
-    this.page = 1;
-  }
-
-  async fetchImages() {
-    const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw response;
-    }
-
-    return response
-      .json()
-      .then(({ hits }) => {
-        this.incrementPage();
-
-        return hits;
-      })
-      .catch(err => {
-        console.warn(err);
-      });
-  }
-
-  incrementPage() {
-    this.page += 1;
-  }
-
-  resetPage() {
-    this.page = 1;
-  }
-
-  get query() {
-    return this.searchQuery;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-}
-*/

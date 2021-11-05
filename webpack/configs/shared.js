@@ -21,12 +21,7 @@ module.exports = env => ({
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
-            loader: 'url-loader',
-            options: {
-              name: '[path][name].[ext]',
-              limit: 8192,
-              esModule: false,
-            },
+            loader: "file-loader?name=images/img-[hash:6].[ext]"
           },
           'img-loader',
         ],
