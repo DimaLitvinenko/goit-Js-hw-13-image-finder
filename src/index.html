@@ -16,34 +16,31 @@
  
      
 <body>
+
   <!-- Header -->
   <header class="page-header">
-    <div class="container header-container">
-      <a href="./index.html" class="logo page-header__logo animate__rubberBand">
-        <!-- <span class="logo__web"></span> -->
-        <img src="./images/dimalyLOGO.png" alt="developer-logo" class="logo__web">
-      </a>
-      <a href="https://pixabay.com/">
-        <svg class="icon pixabay-logo" width="50" height="50">
-          <use href="./images/sprite.svg#pixabay-logo"></use>
-        </svg>
-      </a>
+    <div class="container header-container head-">
+     
+      <nav>
+        <a href="./index.html" class="logo page-header__logo">
+          <img src="./images/logo-dark_bg.png" alt="developer-logo" class="logo__web" width="50px" height="50px">
+        </a>
 
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero section -->'
-    <section class="hero-section" >
-        <h1 class="hero-section__title">Find now the best Photo</h1>
-        <button data-modal-open type="button" class="hero-section__button">Заказать услугу</button>
-    </section>
-
-    <!-- Search section-->
-    <section class="images-section">
-      <div class="container">
-
+        <ul>
+          <li>
+            <a href="" class="">Home</a>
+          </li>
+          <li>
+            <a href="https://pixabay.com/" class="logo page-header__logo">
+              <svg class="icon pixabay-logo" width="50" height="50">
+                <use href="./images/sprite.svg#pixabay-logo"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="input-wrapper">
         <form class="search-form" id="search-form">
           <div class="search-form-wrapper">
             <input 
@@ -62,18 +59,28 @@
             </button>
           </div>
         </form>
+      </div>
       
-        <ul class="gallery gallery-js"></ul>
+    </div>
+  </header>
+  
+  <!-- Main section -->
+  <main class="main">
+    <section class="main-section section-padding">
+      <div class="container">
+        <h1 class="main-section__title">Find now the best Photo</h1>
         
+        <!-- Images (API) gallery -->
+        <ul class="gallery gallery-js"></ul>
+          
         <div class="observer-item"></div>
         <div class="loader hide-loader" id="loader"></div>
-
+  
         <button class="scroll-up" type="button" id="scrollToTop">
           <svg class="scroll-svg" width="30" height="30">
             <use href="./images/sprite.svg#icon-up"></use>
           </svg>
         </button>
-
       </div>
     </section>
   </main>
@@ -81,9 +88,10 @@
   <!-- Footer -->
   <footer class="page-footer">
     <div class="container page-footer--container">
-      <a href="./index.html" class="logo page-footer--logo animate__rubberBand">
-        <span class="logo__web">Web</span>Studio
+      <a href="./index.html" class="logo page-footer__logo">
+        <img src="./images/logo-dark_bg.png" alt="developer-logo" class="logo__web" width="50px" height="50px">
       </a>
+      <button data-modal-open type="button" class="page-header__button">Заказать услугу</button>
     </div>
     <p class="copy-right"> &#169 Д.О. Литвиненко, 2021</p>
   </footer>

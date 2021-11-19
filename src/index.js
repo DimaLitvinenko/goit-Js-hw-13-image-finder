@@ -1,6 +1,6 @@
 import './main.scss'
 import 'material-icons/iconfont/two-tone.scss';
-import cardItemTemplate from './templates/galleryItemTemp.hbs'
+import cardItemTemplate from './templates/imagesGallery.hbs'
 import openLightBoxHandler from './js/components/lightBox'
 import { onError, onFetchError } from './js/components/notifications'
 import PixabayApiService from './js/api/apiService'
@@ -75,7 +75,6 @@ function onObserveHandler(entries) {
     }
   });
 };
-
 
 function hideLoader() {
   loader.classList.add('hide-loader');

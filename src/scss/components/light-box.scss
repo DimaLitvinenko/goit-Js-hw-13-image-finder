@@ -109,11 +109,20 @@
     max-height: 100vh;
     max-width: 100vw;
   }
-  
-  .lightbox__button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+
+.lightbox__wrapper {
+  position: relative;
+    // background-image: url(./images/please-wait-load.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lightbox__close-button {
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,13 +137,20 @@
     cursor: pointer;
     transition: background-color var(--animation-duration) var(--timing-function);
     outline: none;
-    background-image: url('../images/icon-close.svg');
-    background-position: center;
-    background-size: 60%;
-    background-repeat: no-repeat;
-  }
-  
-  .lightbox__button:hover,
-  .lightbox__button:focus {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.5);
+    } 
+}
+
+.lightbox__close-icon {
+  display: block;
+  margin: auto;
+  fill: red;
+
+    &:hover,
+    &:focus {
+      fill:green;
+    }
+} 

@@ -1,19 +1,39 @@
 .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
   
-    @media screen and (min-width: 480px) {
-      width: 480px;
-    }
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
 
-    @media screen and (min-width: 768px) {
-      width: 768px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
     
-    @media screen and (min-width: 1200px) {
-      width: 1200px;
-    }
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
 }
-  
+
+// .container {
+//   @media screen and(max-width: $small) {
+//     width: 100%;
+//     padding: 0 10px;
+//   }
+//   width: 320px;
+//   margin: 0 auto;
+//   padding: 0 20px;
+
+//   @media screen and(min-width: $medium) {
+//     width: 768px;
+//     padding: 0 75px;
+//   }
+//   @media screen and(min-width: $large) {
+//     width: 1024px;
+//     padding: 0 71px;
+//   }
+//   @media screen and(min-width: $full) {
+//     width: 1400px;
+//     padding: 0 70px;
+//   }

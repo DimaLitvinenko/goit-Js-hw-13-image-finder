@@ -7,9 +7,9 @@ let instance = null;
 export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
     instance = basicLightbox.create(`
-      <div class="lightbox__wrapper" style="background-image: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif')">
+      <div class="lightbox__wrapper" style="background: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif')">
         <button class="lightbox__close-button" type="button"> 
-          <i class="lightbox__close-icon material-icons">
+          <i class="material-icons lightbox__close-icon">
           close
           </i> 
         </button>

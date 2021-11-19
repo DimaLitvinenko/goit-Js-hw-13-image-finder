@@ -1,6 +1,11 @@
 .page-header {
-    position: fixed;
-    
+    // position: fixed;
+    text-align: center;
+    z-index: 2;
+    // background-image: url('../../images/bg/bgplan3.png');
+    background: url('./images/bgplan3.png') center no-repeat;
+    background-color: rgba($color: #2b063c8d, $alpha: 1.0) ;
+    background-size: cover;
 }
 
 .header-container {
@@ -9,6 +14,95 @@
     justify-content: space-around;
     padding: 0 auto;
 }
-// .logo__web {
-//     background: url('./images/dimalyLOGO.png');
-// }
+
+.pixabay-logo {
+    fill: white;
+}
+
+
+// ================= SEARCH INPUT ======================
+  .search-form {
+    position: relative;
+  }
+  
+  .search-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-form__label {
+    display: flex;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    color: #0de45f;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 30px;
+  }
+  
+  .search-form__input {
+    padding: 12px 24px;
+  
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 18px;
+    line-height: 18px;
+    color: #4ae40d;
+    border-radius: 50px;
+    border: 2px solid white;
+    outline-style: none;
+    transition: color $animation-duration $animation-timing,
+    border $animation-duration $animation-timing;
+  
+    &::placeholder {
+      color: #4ae40d;
+    }
+  
+    &:hover,
+    &:focus {
+      color: #0de45f;
+      padding: 12px 0;
+      outline: 0;
+      border: 1px solid transparent;
+      border-bottom: 2px solid #4ae40d;
+      border-radius: 2px;
+    } 
+  }
+  
+  .search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 40px;
+    height: 40px;
+    
+    cursor: pointer;
+    padding: 2px;
+    border-style: none;
+    border-radius: 50%;
+    background-color: #4ae40d;
+    opacity: 0.8;
+    outline-style: none;
+    transition:  background-color $animation-duration $animation-timing,
+    opacity $animation-duration $animation-timing;
+  
+    &:focus,
+    &:hover {
+      opacity: 1;
+      background-color: #4ae40d;
+  
+      & .search-svg,
+      & .search-svg {
+        fill: #e4630d;
+      }
+    }
+  }
+  
+  .search-svg {
+    position: absolute;
+    fill: #ffffff;
+    transition: fill $animation-duration $animation-timing;
+  }
