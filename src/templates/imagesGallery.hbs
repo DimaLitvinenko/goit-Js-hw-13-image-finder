@@ -1,6 +1,6 @@
 {{#each this}}
 <li class="photo-item" id="{{id}}" data-index="" >
-    <div class="photo-item__container" style="background-image: url(https://i.imgur.com/NI2NcSe.gif)">
+    <div class="photo-item__container gallery-container" id="gallery-container" style="background-image: url(https://i.imgur.com/NI2NcSe.gif)">
         <img 
         class="photo-item__img" 
         src="{{webformatURL}}" 
@@ -30,3 +30,30 @@
     </div>
 </li>
 {{/each}}
+
+
+
+{{!-- <div class="
+gallery-container 
+d-flex 
+align-items-center 
+justify-content-center" 
+id="gallery-container"
+>
+    <a 
+        data-lg-size="1600-2400" 
+        data-src="https://images.unsplash.com/photo-1605973029521-8154da591bd7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1600&q=80" 
+        data-sources='
+        [{"srcset": "https://raw.githubusercontent.com/sachinchoolur/lightGallery/gh-pages/images/avif/3.avif", 
+        "type":"image/avif"}]' 
+        data-sub-html="
+        <h4>Photo by - 
+            <a href='https://unsplash.com/@thesaboo' >Sascha Bosshard </a>
+        </h4>
+        <p> Location - 
+            <a href='https://unsplash.com/s/photos/pizol%2C-mels%2C-schweiz'>Pizol, Mels, Schweiz</a>
+        </p>"
+    >
+        <img class="img-fluid" src="https://images.unsplash.com/photo-1605973029521-8154da591bd7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=240&q=80" />
+    </a>
+</div> --}}

@@ -4,7 +4,7 @@
   margin: 0 auto;
   
   @media screen and (min-width: 480px) {
-    width: 480px;
+    width: 320px;
   }
 
   @media screen and (min-width: 768px) {
@@ -12,28 +12,30 @@
   }
     
   @media screen and (min-width: 1200px) {
-    width: 1200px;
+    width: 1024px;
   }
 }
 
-// .container {
-//   @media screen and(max-width: $small) {
-//     width: 100%;
-//     padding: 0 10px;
-//   }
-//   width: 320px;
-//   margin: 0 auto;
-//   padding: 0 20px;
+.container {
+  @media screen and(max-width: $small) {
+    width: 100%;
+    padding: 0 10px;
+  }
 
-//   @media screen and(min-width: $medium) {
-//     width: 768px;
-//     padding: 0 75px;
-//   }
-//   @media screen and(min-width: $large) {
-//     width: 1024px;
-//     padding: 0 71px;
-//   }
-//   @media screen and(min-width: $full) {
-//     width: 1400px;
-//     padding: 0 70px;
-//   }
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media screen and(min-width: $medium) {
+    width: 768px;
+    padding: 0 20px;
+  }
+  @media screen and(min-width: $large) {
+    width: 1024px;
+    padding: 0 60px;
+  }
+  @media screen and(min-width: $full) {
+    width: 1400px;
+    padding: 0 70px;
+  }
+}

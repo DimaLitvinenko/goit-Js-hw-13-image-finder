@@ -14,6 +14,14 @@ const options = {
   rootMargin: '100px',
   threshold: 0.5,
 };
+import lightGallery from 'lightgallery';
+// // Plugins
+// import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import lgZoom from 'lightgallery/plugins/zoom'
+lightGallery(document.getElementById("gallery-container"), {
+  speed: 500,
+  plugins: [lgZoom]
+});
 
 searchForm.addEventListener('submit', searchPhotoHandler);
 gallery.addEventListener('click', openLightBoxHandler);

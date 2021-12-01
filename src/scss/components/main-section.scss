@@ -13,16 +13,9 @@
     list-style: none;
     margin-left: auto;
     margin-right: auto;
-  }
+}
   
-  .photo-item__container {
-    background-size: contain;
-  }
   
-  .photo-item__container .photo-item__img {
-    object-fit: cover;
-    cursor: zoom-in;
-  }
   
   .photo-item {
     position: relative;
@@ -50,6 +43,15 @@
       opacity: 1;
       transform: translatey(20%);
     }
+  }
+
+  .photo-item__container {
+    background-size: contain;
+  }
+  
+  .photo-item__container .photo-item__img {
+    object-fit: cover;
+    cursor: zoom-in;
   }
   
   .stats {

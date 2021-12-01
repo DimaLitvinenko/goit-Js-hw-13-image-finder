@@ -1,8 +1,25 @@
 import * as basicLightbox from 'basiclightbox'
 import 'material-icons/iconfont/filled.scss';
-import * as basicSlider from 'basicslider'
+// import * as basicSlider from 'basicslider'
 import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css'
 let instance = null;
+
+// import lightGallery from 'lightgallery';
+// // Plugins
+// import lgThumbnail from 'lightgallery/plugins/thumbnail'
+// import lgZoom from 'lightgallery/plugins/zoom'
+
+// lightGallery(document.getElementById("gallery-container"), {
+//   speed: 500,
+//   plugins: [lgZoom]
+// });
+
+// lightGallery(document.getElementById('static-thumbnails'), {
+//   animateThumb: false,
+//   zoomFromOrigin: false,
+//   allowMediaOverlap: true,
+//   toggleThumb: true,
+// });
 
 export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
@@ -38,6 +55,7 @@ function closeLightBoxByEscHandler({ code }) {
   }
   return;
 }
+
 
 
 
