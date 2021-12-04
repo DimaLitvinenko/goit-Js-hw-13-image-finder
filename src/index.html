@@ -11,12 +11,10 @@
   crossorigin="anonymous"
   >
   <link rel="stylesheet" href="https://use.typekit.net/lnf3xaj.css">
-  <title>Finder Photos</title>
+  <title>Photo Finder</title>
 </head>
  
-     
 <body>
-
   <!-- Header -->
   <header class="page-header">
     <div class="container header-container head-">
@@ -66,36 +64,44 @@
   
   <!-- Main section -->
   <main class="main">
-    <section class="main-section section-padding">
+    <section class="main-section section-position">
       <div class="container">
         <h1 class="main-section__title">Find now the best Photo</h1>
         
-        <!-- Images (API) gallery -->
-        <div id="static-thumbnails">
+        <!-- Images gallery-list -->
         <ul class="gallery gallery-js"></ul>
-        </div>
+
         <div class="observer-item"></div>
         <div class="loader hide-loader" id="loader"></div>
-  
+        
         <button class="scroll-up" type="button" id="scrollToTop">
           <svg class="scroll-svg" width="30" height="30">
             <use href="./images/sprite.svg#icon-up"></use>
           </svg>
         </button>
       </div>
+
+      <!-- Loader/Spiner -->
+      <div class="page-load-status">
+        <div class="loader-ellips infinite-scroll-request">
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+        </div>
+      </div>
+
     </section>
   </main>
   
   <!-- Footer -->
   <footer class="page-footer">
-    <div class="container page-footer--container">
-      <a href="./index.html" class="logo page-footer__logo">
+    <div class="container page-footer__container">
+      <p class="copy-right"> &#169 Д.О. Литвиненко, 2021</p>
+      <!-- <a href="./index.html" class="logo page-footer__logo">
         <img src="./images/logo-dark_bg.png" alt="developer-logo" class="logo__web" width="50px" height="50px">
-      </a>
-      <button data-modal-open type="button" class="page-header__button">Заказать услугу</button>
+      </a> -->
     </div>
-    <p class="copy-right"> &#169 Д.О. Литвиненко, 2021</p>
   </footer>
 </body>
-
 </html>

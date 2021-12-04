@@ -24,15 +24,15 @@ let instance = null;
 export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
     instance = basicLightbox.create(`
-      <div class="lightbox__wrapper" style="background: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif')">
+      <div class="lightbox__wrapper">
         <button class="lightbox__close-button" type="button"> 
           <i class="material-icons lightbox__close-icon">
-          close
+            close
           </i> 
         </button>
-        <img class="lightbox__image" src="${target.dataset.lightboxImg}" alt="${target.alt}" width="800" height="600">
+        <img class="lightbox__image" src="${target.dataset.lightboxImg}" alt="${target.alt}">
       </div>
-    `, {
+      `, {
       onShow: (instance) => {
         document.body.style.overflowY = 'hidden';
         instance.element().querySelector('.lightbox__close-button').onclick = instance.close;

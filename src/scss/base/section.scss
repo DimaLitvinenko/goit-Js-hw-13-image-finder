@@ -1,4 +1,9 @@
-.section-padding {
+.main-section {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.section-position {
   padding-top: 50px;
   padding-bottom: 50px;
   @media screen and (min-width: $medium) {
