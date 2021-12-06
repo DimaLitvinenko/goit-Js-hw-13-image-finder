@@ -17,27 +17,40 @@
 <body>
   <!-- Header -->
   <header class="page-header">
-    <div class="container header-container head-">
-     
-      <nav>
-        <a href="./index.html" class="logo page-header__logo">
-          <img src="./images/logo-dark_bg.png" alt="developer-logo" class="logo__web" width="50px" height="50px">
-        </a>
+    <div class="container header-container">
 
-        <ul>
-          <li>
-            <a href="" class="">Home</a>
+      <nav class="header-nav">
+        <ul class="nav-list list">
+          <li class="nav-list__item">
+            <a href="./index.html" class="nav-list__item-link">Home</a>
           </li>
-          <li>
-            <a href="https://pixabay.com/" class="logo page-header__logo">
-              <svg class="icon pixabay-logo" width="50" height="50">
+          <li class="nav-list__item">
+            <a href="./index.html" class="developer-logo logo nav-list__item-link">
+              <img 
+                class="nav-list__img-logo" 
+                src="./images/logo-dark_bg.png" 
+                alt="developer-logo" 
+              />
+            </a>
+          </li>
+          <li class="nav-list__item">
+            <a href="https://pixabay.com/" class="logo nav-list__item-link">
+              <svg class="nav-list__icon pixabay-logo" >
                 <use href="./images/sprite.svg#pixabay-logo"></use>
               </svg>
             </a>
           </li>
         </ul>
       </nav>
-      
+
+      <div class="search-wrapper" id="input-search">
+        <div class="input-holder">
+            <input type="text" class="search-input" placeholder="Type to search" />
+            <button class="search-icon" onclick="`searchToggle(this, event);`"><span></span></button>
+        </div>
+        <span class="close" id="searchBtn" onclick="searchToggle(this, event);"></span>
+      </div>
+
       <div class="input-wrapper">
         <form class="search-form" id="search-form">
           <div class="search-form-wrapper">
@@ -65,8 +78,8 @@
   <!-- Main section -->
   <main class="main">
     <section class="main-section section-position">
+      <h1 class="main-section__title">Find now the best Photo</h1>
       <div class="container">
-        <h1 class="main-section__title">Find now the best Photo</h1>
         
         <!-- Images gallery-list -->
         <ul class="gallery gallery-js"></ul>

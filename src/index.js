@@ -1,5 +1,5 @@
 import './main.scss'
-import 'material-icons/iconfont/two-tone.scss';
+// import 'material-icons/iconfont/two-tone.scss';
 import cardItemTemplate from './templates/imagesGallery.hbs'
 import openLightBoxHandler from './js/components/lightBox'
 import { onError, onFetchError } from './js/components/notifications'
@@ -8,32 +8,38 @@ const apiService = new PixabayApiService();
 
 import refs from './js/references/refs'
 const { searchForm, gallery, observerItem, scrollElem, loader } = refs;
-
 const observer = new IntersectionObserver(onObserveHandler, options);
 const options = {
   rootMargin: '100px',
   threshold: 0.5,
 };
-// import lightGallery from 'lightgallery';
-// // // Plugins
-// // import lgThumbnail from 'lightgallery/plugins/thumbnail'
-// import lgZoom from 'lightgallery/plugins/zoom'
-// lightGallery(document.getElementById("gallery-container"), {
-//   speed: 500,
-//   plugins: [lgZoom]
-// });
 
 searchForm.addEventListener('submit', searchPhotoHandler);
 gallery.addEventListener('click', openLightBoxHandler);
+
+// searchToggle(gallery, searchPhotoHandler);
+
+// function searchToggle(obj, evt) {
+//   const container = $(obj).closest('.search-wrapper');
+//     if (!container.hasClass('active')) {
+//       container.addClass('active');
+//       evt.preventDefault();
+//     } else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+//       container.removeClass('active');
+//       // clear input
+//       container.find('.search-input').val('');
+//     }
+// }
 
 function searchPhotoHandler(event) {
   event.preventDefault();
   clearCardGallery();
   showLoader();
 
+
   const inputValue = event.currentTarget.elements.query.value;
   console.log(inputValue);
-
+  
   const str = new RegExp('[a-zA-Z]');
   if (!str.test(inputValue) || inputValue === '') {
     hideLoader();

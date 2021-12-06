@@ -24,13 +24,18 @@ let instance = null;
 export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
     instance = basicLightbox.create(`
+      
       <div class="lightbox__wrapper">
-        <button class="lightbox__close-button" type="button"> 
+        <button class="lightbox__close-button" id="lightBoxClose" type="button"> 
           <i class="material-icons lightbox__close-icon">
             close
           </i> 
         </button>
-        <img class="lightbox__image" src="${target.dataset.lightboxImg}" alt="${target.alt}">
+        <img 
+        class="lightbox__image" 
+        src="${target.dataset.lightboxImg}" 
+        alt="${target.alt}"
+        />
       </div>
       `, {
       onShow: (instance) => {
@@ -44,6 +49,7 @@ export default function openLightBoxHandler({ target }) {
     })
     instance.show(() => {
       window.addEventListener('keydown', closeLightBoxByEscHandler); 
+      
     })
     return;
   }

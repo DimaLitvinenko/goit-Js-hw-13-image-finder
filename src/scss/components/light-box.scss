@@ -1,8 +1,27 @@
-// .basiclightbox {  
-//   // width: 100%;
-//   // height: 100%;
+// .basicLightbox {
+//   position: absolute;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(0,0,0,.8);
+//   opacity: 0;
+//   transform: scale(0);
+//   transition: opacity $animation-long $animation-duration,
+//   transform $animation-long $animation-timing;
+//   z-index: 10;
+//   will-change: opacity;
 // }
-  
+
+.basicLightbox--visible {
+  opacity: 1;
+  transform: scale(1.09);
+  // overflow-y: hidden;
+}
+
 .lightbox__overlay {
   position: absolute;
   top: 0;
@@ -11,41 +30,33 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.912);
 }
-  
-// .lightbox__content {
-//   transform: scale(0.95);
-//   transition: transform $animation-duration $animation-timing;
-// }
-// .lightbox.is-open .lightbox__content {
-//     transform: scale(1);
-// }
-  
-.lightbox__wrapper {
-  @media screen and(max-width: $small) {
-    width: 100%;
-    padding: 0 10px;
-  }
-  width: $small;
 
-  // background-image: url(./images/please-wait-load.gif);
+.lightbox__wrapper {
+  position: relative;
   background-image: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif');
   background-size: 200px;
   background-repeat: no-repeat;
   background-position: center;
+  @media screen and(max-width: $small) {
+    width: 100%;
+    padding: 0 10px;
+  }
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 15px;
   @media screen and(min-width: $medium) {
-    width: $medium;
+    width: 768px;
+    padding: 0 20px;
   }
   @media screen and(min-width: $large) {
-    width: $large;
+    width: 1024px;
   }
-  // @media screen and(min-width: $full) {
-  //   width: $full;
-  // }
 }
 
-.slider {
-  position: relative;
-}
+// .slider {
+//   width: 100vw;
+//   position: relative;
+// }
 
 .material-icons {
   font-size: 16px;
@@ -55,8 +66,8 @@
 .lightbox__close-button {
   display: block;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0;
+  right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,14 +80,14 @@
   background-color: transparent;
   color: $primary-white-color;
   cursor: pointer;
-  transition: background-color $animation-duration $animation-timing
+  z-index: 202;
+  transition: background-color $animation-duration $animation-timing,
   color $animation-duration $animation-timing;
-  // outline: none;
 
   &:hover,
   &:focus {
     color: $accent-color;
-    animation: spin 2s $animation-timing infinite;
+    animation: spin $animation-long $animation-timing infinite ;
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -85,28 +96,22 @@
         transform: rotate(180deg);
       }
       100% {
-        transform: rotate(-180deg);
+        transform: rotate(0deg);
       }
     }
     background-color: rgba(0, 0, 0, 0.5);
   } 
 }
-
 .lightbox__close-icon {
   display: block;
   margin: auto;
-  fill: red;
-
-    &:hover,
-    &:focus {
-      fill:green;
-    }
 } 
 
 .lightbox__image {
   display: block;
-  width: auto;
-  height: auto;
+  max-width: 100%;
+  max-height: 100vh;
   // max-height: 100vh;
-  // max-width: 100vw;
+  // height: 100vh;
+  // width: 100vw;
 }

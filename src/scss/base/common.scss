@@ -16,7 +16,7 @@ ol {
 }
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   // height: auto;
 }
 body {
@@ -27,15 +27,10 @@ body {
   font-weight: normal;
   font-style: normal;
   letter-spacing: 0.03em;
-  min-height: 100vh;
-
-  // &.modal-open,
-  // &.mobile-open {
-  //   overflow: hidden;
-  //   @media screen and (min-width: 768px) {
-  //     overflow: auto;
-  //   }
-  // }
+  // min-height: 500px;
+}
+main {
+  min-height: 200px;
 }
 .list {
   list-style: none;

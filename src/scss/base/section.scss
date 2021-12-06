@@ -1,6 +1,6 @@
 .main-section {
   text-align: center;
-  margin: auto;
+  // margin: auto;
   margin-bottom: 30px;
 }
 .section-position {
@@ -16,6 +16,10 @@
   @media screen and (min-width: $full) {
     padding: 50px 0;
   }
+}
+.lightbox__window {
+  padding: 20px;
+  margin: 0 auto;
 }
 
 // @media (max-width:480px) {

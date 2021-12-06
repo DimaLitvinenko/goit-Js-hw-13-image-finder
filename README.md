@@ -51,7 +51,6 @@ webformatURL: 180px, 340px, 640px, max 960px
 previewURL max width 150px
 
 
-
 ```js
 prettierrc.json
 {
