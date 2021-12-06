@@ -1,22 +1,21 @@
 .container {
   @media screen and(max-width: $small) {
     width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
   }
-  width: 320px;
+
+  width: $small;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 15px;
+
   @media screen and(min-width: $medium) {
-    width: 768px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: $medium;
   }
   @media screen and(min-width: $large) {
-    width: 1024px;
+    width: $large;
+    padding: 0 20px
   }
   @media screen and(min-width: $full) {
-    width: 1400px;
+    width: $full;
   }
 }
