@@ -1,30 +1,23 @@
 .main-section {
-  text-align: center;
-  // margin: auto;
-  margin-bottom: 30px;
+	text-align: center;
+	// margin: auto;
+	margin-bottom: 30px;
 }
 .section-position {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  @media screen and (min-width: $medium) {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-  @media screen and (min-width: $large) {
-    padding-bottom: 75px;
-  }
-  @media screen and (min-width: $full) {
-    padding: 50px 0;
-  }
+	padding-top: 50px;
+	padding-bottom: 50px;
+	@media screen and (min-width: $medium) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+	@media screen and (min-width: $large) {
+		padding-bottom: 75px;
+	}
+	@media screen and (min-width: $full) {
+		padding: 50px 0;
+	}
 }
 .lightbox__window {
-  padding: 20px;
-  margin: 0 auto;
+	padding: 20px;
+	margin: 0 auto;
 }
-
-// @media (max-width:480px) {
-//   h1 { font-size: 3em; }
-//   h2 { font-size: 1.8em; }
-//   h3 { font-size: 1.5em; }
-//   td:first-child { white-space: normal; }
-// }

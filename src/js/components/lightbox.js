@@ -1,132 +1,53 @@
-import * as basicLightbox from 'basiclightbox'
-import 'material-icons/iconfont/filled.scss';
-// import * as basicSlider from 'basicslider'
-import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css'
+import * as basicLightbox from "basiclightbox";
+import * as basicSlider from "basicslider";
+import "material-icons/iconfont/filled.scss";
+import "../../../node_modules/basiclightbox/dist/basicLightbox.min.css";
 let instance = null;
 
-// import lightGallery from 'lightgallery';
-// // Plugins
-// import lgThumbnail from 'lightgallery/plugins/thumbnail'
-// import lgZoom from 'lightgallery/plugins/zoom'
-
-// lightGallery(document.getElementById("gallery-container"), {
-//   speed: 500,
-//   plugins: [lgZoom]
-// });
-
-// lightGallery(document.getElementById('static-thumbnails'), {
-//   animateThumb: false,
-//   zoomFromOrigin: false,
-//   allowMediaOverlap: true,
-//   toggleThumb: true,
-// });
-
 export default function openLightBoxHandler({ target }) {
-  if (target.nodeName === 'IMG') {
-    instance = basicLightbox.create(`
-      <div class="lightbox__wrapper">
-        <img 
-        class="lightbox__image" 
-        src="${target.dataset.lightboxImg}" 
-        alt="${target.alt}"
-        />
-        <button class="lightbox__close-button" id="lightBoxClose" type="button"> 
-          <i class="material-icons lightbox__close-icon">
-            close
-          </i> 
-        </button> 
-      </div>
-      `, {
-        onShow: (instance) => {
-          document.body.style.overflowY = 'hidden';
-          instance.element().querySelector('#lightBoxClose').onclick = instance.close;
-        },
-        onClose: () => {
-          document.body.style.overflowY = 'unset';
-        },
-        className : '.slider',
-      });
-      instance.show(() => {
-        window.addEventListener('keydown', closeLightBoxByEscHandler); 
-      
-      })
-    return;
-  }
+	if (target.nodeName === "IMG") {
+		instance = basicLightbox.create(
+			`
+        <div class="lightbox__wrapper slider" data-id="0">
+          <img 
+          class="lightbox__image" 
+          src="${target.dataset.lightboxImg}" 
+          alt="${target.alt}"
+          />
+          <button class="lightbox__close-button" id="lightBoxClose" type="button"> 
+            <i class="material-icons lightbox__close-icon">
+              close
+            </i> 
+          </button> 
+        </div>
+      `,
+			{
+				onShow: instance => {
+					document.body.style.overflowY = "hidden";
+					instance.element().querySelector("#lightBoxClose").onclick = instance.close;
+				},
+				onClose: () => {
+					document.body.style.overflowY = "unset";
+				},
+				className: ".slider",
+			},
+		);
+		instance.show(() => {
+			window.addEventListener("keydown", closeLightBoxByEscHandler);
+		});
+		return;
+	}
 }
+
 // Закрыть lightbox клавишей ESC
 function closeLightBoxByEscHandler({ code }) {
-  if (code === 'Escape') {
-    instance.close();
-  }
-  return;
+	if (code === "Escape") {
+		instance.close();
+	}
+	return;
 }
 
-
-
-
-
-// const scrollGalleryHandler = ({ key }) => {   
-//   let currentIndex = galleryItems.findIndex(
-//     item => item.description === image.alt || item.original === image.src
-//   );
-//   if (key === "ArrowLeft") {                // - Пролистывание изображений галереи в открытом модальном окне стрелками "влево".
-//     if (currentIndex !== 0) {
-//       currentIndex -= 1;
-//     } else {
-//       currentIndex = 0;
-//     };
-//   };
-//   if (key === "ArrowRight") {                // - Пролистывание изображений галереи в открытом модальном окне стрелками "вправо".
-//     if (currentIndex !== galleryItems.length - 1) {
-//       currentIndex += 1;
-//     } else {
-//       currentIndex = galleryItems.length - 1;
-//     };
-//   }; 
-  
-//   image.alt = galleryItems[currentIndex].description;
-//   image.src = galleryItems[currentIndex].original;
-// };
-
-  // for each
-// export function forEach (arr, callback, scope) {
-//   for (var i = 0, l = arr.length; i < l; i++) {
-//     callback.call(scope, arr[i], i);
-//   }
-// }
-
-
-  // Следующий
-// (function () {
-//   "use strict";
-
-//   if (!("nextElementSibling" in document.documentElement)) {
-//     Object.defineProperty(Element.prototype, "nextElementSibling", {
-//       get: function(){
-//         var e = this.nextSibling;
-//         while(e && 1 !== e.nodeType) {
-//           e = e.nextSibling;
-//         }
-//         return e;
-//       }
-//     });
-//   }
-// })();
-
-  //   Предыдущий
-// (function () {
-//   "use strict";
-
-//   if (!("previousElementSibling" in document.documentElement)) {
-//     Object.defineProperty(Element.prototype, "previousElementSibling", {
-//       get: function(){
-//         var e = this.previousSibling;
-//         while(e && 1 !== e.nodeType) {
-//           e = e.previousSibling;
-//         }
-//         return e;
-//       }
-//     });
-//   }
-// })();
-
+basicSlider.create(
+	document.querySelector('.slider[data-id="0"]'),
+	Array.prototype.map.call(document.querySelectorAll('.slider[data-id="0"] > img'), slide => slide.innerHTML),
+);
