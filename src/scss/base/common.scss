@@ -17,20 +17,20 @@ ol {
 img {
   display: block;
   width: 100%;
-  // height: auto;
 }
 body {
-  font-display: swap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin-top: auto;
+
   color: $primary-text-color;
   background-color: $primary-white-color;
   font-family: $third-font;
   font-weight: normal;
   font-style: normal;
   letter-spacing: 0.03em;
-  // min-height: 500px;
-}
-main {
-  min-height: 200px;
 }
 .list {
   list-style: none;

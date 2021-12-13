@@ -1,6 +1,15 @@
-.page-footer__logo {
-    text-align: center;
+.page-footer {
+    z-index: 2;
+    min-height: 160px;
+    background: url('./images/background/hellobg.png') center no-repeat ;
+    background-color: rgba($color: #615e5c8d, $alpha: 1.0);
+    background-size: cover;
+}
+.page-footer__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .copy-right {
     text-align: center;
+    color: $title-text-color;
 }

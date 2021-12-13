@@ -25,7 +25,6 @@ export default function openLightBoxHandler({ target }) {
   if (target.nodeName === 'IMG') {
     instance = basicLightbox.create(`
       <div class="lightbox__wrapper">
-        
         <img 
         class="lightbox__image" 
         src="${target.dataset.lightboxImg}" 
@@ -46,7 +45,7 @@ export default function openLightBoxHandler({ target }) {
           document.body.style.overflowY = 'unset';
         },
         className : '.slider',
-      })
+      });
       instance.show(() => {
         window.addEventListener('keydown', closeLightBoxByEscHandler); 
       
