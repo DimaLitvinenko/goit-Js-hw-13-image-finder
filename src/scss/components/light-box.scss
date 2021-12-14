@@ -25,7 +25,7 @@
 }
 
 .lightbox__wrapper {
-  background-image: url('https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif');
+  background-image: url("https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif");
   background-size: 200px;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,9 +34,9 @@
     width: 100%;
     padding: 0 10px;
   }
-    width: 320px;
-    margin: 0 auto;
-    padding: 0 15px;
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 15px;
   @media screen and(min-width: $medium) {
     width: 768px;
     padding: 0 20px;
@@ -59,7 +59,6 @@
 
 .lightbox__image {
   @media screen and (max-width) {
-    
   }
   position: relative;
   display: block;
@@ -73,7 +72,7 @@
 .lightbox__close-button {
   display: block;
   position: absolute;
-  top: 1em;
+  top: 2.5em;
   right: 2em;
   display: flex;
   align-items: center;
@@ -91,12 +90,12 @@
   cursor: pointer;
   z-index: 202;
   transition: background-color $animation-duration $animation-timing,
-  color $animation-duration $animation-timing;
+    color $animation-duration $animation-timing;
 
   &:hover,
   &:focus {
     color: $accent-color;
-    animation: spin $animation-long $animation-timing infinite ;
+    animation: spin $animation-long $animation-timing infinite;
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -109,9 +108,9 @@
       }
     }
     background-color: rgba(0, 0, 0, 0.5);
-  } 
+  }
 }
 .lightbox__close-icon {
   display: block;
   margin: auto;
-} 
+}
