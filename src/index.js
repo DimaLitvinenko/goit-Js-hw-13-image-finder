@@ -10,80 +10,82 @@ const apiService = new PixabayApiService();
 const observer = new IntersectionObserver(intersectionObserveHandler, options);
 
 const options = {
-	rootMargin: "200px",
+    rootMargin: "200px",
 };
 
 searchForm.addEventListener("submit", searchPhotoHandler);
 gallery.addEventListener("click", openLightBoxHandler);
 
 function searchPhotoHandler(event) {
-	event.preventDefault();
-	clearCardGallery();
-	showLoader();
+    event.preventDefault();
+    clearCardGallery();
+    showLoader();
 
-	const inputValue = event.currentTarget.elements.query.value;
-	console.log(inputValue);
+    const inputValue = event.currentTarget.elements.query.value;
+    console.log(inputValue);
 
-	const str = new RegExp("[a-zA-Z]");
-	if (!str.test(inputValue) || inputValue === "") {
-		hideLoader();
-		return onError();
-	}
+    const str = new RegExp("[a-zA-Z]");
+    if (!str.test(inputValue) || inputValue === "") {
+        hideLoader();
+        return onError();
+    }
 
-	apiService.query = inputValue;
-	apiService.resetPage();
-	apiService.fetchPhotos().then(renderImages).catch(onFetchError);
+    apiService.query = inputValue;
+    apiService.resetPage();
+    apiService.fetchPhotos().then(renderImages).catch(onFetchError);
 }
 
 function renderImages(images) {
-	console.log(images.length === 0);
-	if (images.length === 0) {
-		hideLoader();
-		return onError();
-	}
-	const markup = cardItemTemplate(images);
-	gallery.insertAdjacentHTML("beforeend", markup);
-	observer.observe(observerItem);
+    if (images.length === 0) {
+        hideLoader();
+        return onError();
+    }
+    const markup = cardItemTemplate(images);
+    gallery.insertAdjacentHTML("beforeend", markup);
+    observer.observe(observerItem);
 }
 
 function clearCardGallery() {
-	gallery.innerHTML = "";
-	observer.unobserve(observerItem);
+    gallery.innerHTML = "";
+    observer.unobserve(observerItem);
 }
 
 function renderMoreImages() {
-	apiService.fetchPhotos().then(renderImages).then(hideLoader).catch(onFetchError);
+    apiService.fetchPhotos().then(renderImages).catch(onFetchError);
 }
 
 function intersectionObserveHandler(entries) {
-	setTimeout(() => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				renderMoreImages();
-			}
-		});
-	}, 500);
+    setTimeout(() => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                renderMoreImages();
+            }
+        });
+    }, 500);
 }
 
 function hideLoader() {
-	loader.classList.add("hide-loader");
+    loader.classList.add("hide-loader");
 }
+
 function showLoader() {
-	loader.classList.remove("hide-loader");
+    loader.classList.remove("hide-loader");
 }
+
 // Безконечная прокрутка прокрутка
 window.addEventListener("scroll", function () {
-	if (pageYOffset > 100) {
-		scrollElem.style.opacity = "1";
-	} else {
-		scrollElem.style.opacity = "0";
-	}
+    if (scrollY > 100) {
+        scrollElem.style.opacity = "1";
+    } else {
+        scrollElem.style.opacity = "0";
+    }
 });
+
 // Кнопка возврат вверх сраницы
 scrollElem.addEventListener("click", upBtnHandler);
 
 function upBtnHandler() {
-	window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 }
 
 // setIntersectionObserver(addNewImages) {

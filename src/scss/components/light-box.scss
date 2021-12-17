@@ -16,101 +16,102 @@
 //   will-change: opacity;
 // }
 .basicLightbox {
-  opacity: 0;
-  transition: opasity $animation-duration $animation-timing;
+    opacity: 0;
+    transition: opasity $animation-duration $animation-timing;
 }
+
 .basicLightbox--visible {
-  opacity: 1;
-  transform: scale(1.09);
+    opacity: 1;
+    transform: scale(1.09);
 }
 
 .lightbox__wrapper {
-  background-image: url("https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif");
-  background-size: 200px;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 200px;
-  @media screen and(max-width: $small) {
-    width: 100%;
-    padding: 0 10px;
-  }
-  width: 320px;
-  margin: 0 auto;
-  padding: 0 15px;
-  @media screen and(min-width: $medium) {
-    width: 768px;
-    padding: 0 20px;
-  }
-  @media screen and(min-width: $large) {
-    width: 1024px;
-  }
+    background-image: url("https://media.giphy.com/media/grNkIEN4dkiMXFLIE9/giphy.gif");
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 200px;
+    @media screen and(max-width: $small) {
+        width: 100%;
+        padding: 0 10px;
+    }
+    width: 320px;
+    margin: 0 auto;
+    padding: 0 15px;
+    @media screen and(min-width: $medium) {
+        width: 768px;
+        padding: 0 20px;
+    }
+    @media screen and(min-width: $large) {
+        width: 1024px;
+    }
 }
 
 .slider {
-  // width: 100vw;
-  display: block;
-  padding: 50px 0;
+    // width: 100vw;
+    display: block;
+    padding: 50px 0;
 }
 
 .material-icons {
-  font-size: 16px;
-  margin-right: 8px;
+    font-size: 16px;
+    margin-right: 8px;
 }
 
 .lightbox__image {
-  @media screen and (max-width) {
-  }
-  position: relative;
-  display: block;
-  max-width: 100%;
-  max-height: 100vh;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 0px 19px 3px #f36b21c7;
-  box-shadow: 0px 0px 19px 3px #f36b21c7;
+    // @media screen and (max-width) {
+    // }
+    position: relative;
+    display: block;
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 19px 3px #f36b21c7;
+    box-shadow: 0px 0px 19px 3px #f36b21c7;
 }
 
 .lightbox__close-button {
-  display: block;
-  position: absolute;
-  top: 2.5em;
-  right: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  color: $primary-white-color;
-  -webkit-box-shadow: 0px 0px 18px 2px $primary-text-color;
-  box-shadow: 0px 0px 18px 2px $primary-text-color;
-  cursor: pointer;
-  z-index: 202;
-  transition: background-color $animation-duration $animation-timing,
-    color $animation-duration $animation-timing;
+    display: block;
+    position: absolute;
+    top: 2.5em;
+    right: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: $primary-white-color;
+    -webkit-box-shadow: 0px 0px 18px 2px $primary-text-color;
+    box-shadow: 0px 0px 18px 2px $primary-text-color;
+    cursor: pointer;
+    z-index: 202;
+    transition: background-color $animation-duration $animation-timing,
+        color $animation-duration $animation-timing;
 
-  &:hover,
-  &:focus {
-    color: $accent-color;
-    animation: spin $animation-long $animation-timing infinite;
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(180deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
+    &:hover,
+    &:focus {
+        color: $accent-color;
+        animation: spin $animation-long $animation-timing infinite;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        background-color: rgba(0, 0, 0, 0.5);
     }
-    background-color: rgba(0, 0, 0, 0.5);
-  }
 }
 .lightbox__close-icon {
-  display: block;
-  margin: auto;
+    display: block;
+    margin: auto;
 }
