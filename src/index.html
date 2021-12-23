@@ -21,34 +21,32 @@
         <nav class="header-nav">
           <ul class="nav-list list">
             <li class="nav-list__item">
-              <a href="./index.html" class="nav-list__item-link">Home</a>
+              <a href="./index.html" class="nav-list__goback-link">
+                Home
+              </a>
             </li>
             <li class="nav-list__item">
-              <a href="./index.html" class="developer-logo logo nav-list__item-link">
+              <a href="https://github.com/DimaLitvinenko/" class="nav-list__item-link">
                 <img 
-                  class="nav-list__img-logo" 
+                  class="nav-list__img-logo logo_img" 
                   src="./images/logo-dark_bg.png" 
-                  alt="developer-logo" 
+                  alt="developer_name_logo" 
+                  width="70"
                 />
               </a>
             </li>
             <li class="nav-list__item">
-              <a href="https://pixabay.com/" class="logo nav-list__item-link">
-                <svg class="nav-list__icon pixabay-logo" >
-                  <use href="./images/sprite.svg#pixabay-logo"></use>
-                </svg>
+              <a href="https://pixabay.com/" class="nav-list__item-link">
+                <img 
+                class="nav-list__img-logo logo_img"
+                src="./images/pixabay_logo.png" 
+                alt="pixabay-api-logo"
+                width="50"
+                />
               </a>
             </li>
           </ul>
         </nav>
-  <!-- 
-          <div class="search-wrapper" id="input-search">
-            <div class="input-holder">
-                <input type="text" class="search-input" placeholder="Type to search" />
-                <button class="search-icon" onclick="`searchToggle(this, event);`"><span></span></button>
-            </div>
-            <span class="close" id="searchBtn" onclick="searchToggle(this, event);"></span>
-          </div> -->
 
         <div class="input-wrapper">
           <form class="search-form" id="search-form">
@@ -58,10 +56,10 @@
               type="text" 
               name="query" 
               autocomplete="off" 
-              placeholder="Search photo by name" 
+              placeholder=" " 
               id="query" 
               />
-              <label class="search-form__label" for="query"></label>
+              <label class="search-form__label" for="query">Search photo by name</label>
               <button class="search-button" type="submit">
                 <svg class="search-svg" width="20" height="20">
                   <use href="./images/sprite.svg#icon-search"></use>

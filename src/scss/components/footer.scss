@@ -1,8 +1,8 @@
 .page-footer {
     z-index: 2;
-    min-height: 160px;
-    background: url('./images/background/hellobg.png') center no-repeat ;
-    background-color: rgba($color: #615e5c8d, $alpha: 1.0);
+    min-height: 100px;
+    background: url("./images/background/hellobg.png") center no-repeat;
+    background-color: rgba($color: #615e5c8d, $alpha: 1);
     background-size: cover;
 }
 .page-footer__container {

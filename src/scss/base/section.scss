@@ -1,23 +1,23 @@
 .main-section {
-	text-align: center;
-	// margin: auto;
-	margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 .section-position {
-	padding-top: 50px;
-	padding-bottom: 50px;
-	@media screen and (min-width: $medium) {
-		padding-top: 60px;
-		padding-bottom: 60px;
-	}
-	@media screen and (min-width: $large) {
-		padding-bottom: 75px;
-	}
-	@media screen and (min-width: $full) {
-		padding: 50px 0;
-	}
+    padding-top: 25px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: $medium) {
+        padding-bottom: 60px;
+    }
+    @media screen and (min-width: $large) {
+        padding-top: 40px;
+        padding-bottom: 105px;
+    }
+    // @media screen and (min-width: $full) {
+    // 	padding-top: ;
+    // }
 }
 .lightbox__window {
-	padding: 20px;
-	margin: 0 auto;
+    padding: 20px;
+    margin: 0 auto;
 }
