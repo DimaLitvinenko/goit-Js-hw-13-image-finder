@@ -1,0 +1,122 @@
+// ------------------- MEDIA -----------------------
+
+@media screen and (max-width: 1278px) {
+    //   ____ SIDEBAR _____
+    .sidebar {
+        display: none;
+    }
+
+    //   ____  _____
+}
+
+// __________________ 375px ___________________
+@media screen and (min-width: 375px) {
+    //   ____ HEADER _____
+    .header {
+        padding-inline: 15px;
+        width: calc(100vw - 30px);
+    }
+    .header-wrapper {
+        flex-direction: column;
+    }
+    .wrapp-navigation {
+        margin-bottom: 8px;
+    }
+    .wrapp-right-side {
+        width: 100%;
+    }
+    .menu-wrapper {
+        padding-inline-end: 0px;
+        width: 100%;
+    }
+    .sing_link--button {
+        margin-inline-end: 2px;
+    }
+    .sing_link--text {
+        display: none;
+    }
+
+    //   ____ MAIN ____
+    .main-content-area {
+        overflow-x: scroll;
+    }
+}
+
+// __________________ 768px ___________________
+@media screen and (min-width: 768px) {
+    //   ____ HEADER _____
+    .header {
+        padding-inline: 30px;
+    }
+    .header-wrapper {
+        flex-direction: row;
+    }
+    .wrapp-navigation {
+        margin-bottom: 0;
+    }
+    .wrapp-right-side {
+        width: unset;
+    }
+    .menu-wrapper {
+        padding-inline-end: 16px;
+        width: auto;
+    }
+    .sing_link--button {
+        margin-inline-end: 16px;
+    }
+    .sing_link--text {
+        display: flex;
+    }
+
+    //   ____ SIDEBAR _____
+    .sidebar-wrapper {
+        margin-inline-start: 16px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    //   _____ MAIN ______
+    .main-wrapp-area {
+        padding-top: 75px;
+    }
+}
+
+// __________________ 1279px ___________________
+@media screen and (min-width: 1279px) {
+    //   ____ HEADER _____
+    .header {
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        padding-inline-start: 12px;
+        width: calc((100vw - 75px) - 275px);
+    }
+    .header-wrapper {
+        align-items: center;
+        -webkit-box-align: center;
+    }
+
+    //   ____ SIDEBAR _____
+    .sidebar {
+        display: block;
+    }
+
+    //   ____ MODAL _____
+    .modal-window {
+        max-width: 528px;
+        max-height: 581px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    //   ____ MAIN _____
+    .main-wrapper {
+        width: calc(100% - 275px);
+    }
+    .main-content-area {
+        overflow-x: hidden;
+    }
+}
